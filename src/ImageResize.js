@@ -196,6 +196,5 @@ export default class ImageResize {
 }
 
 if (window.Quill) {
-    console.log("IN IF MODULE IMAGE RESIZE")
     window.Quill.register('modules/imageResize', ImageResize);
 }
