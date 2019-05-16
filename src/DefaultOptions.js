@@ -50,6 +50,7 @@ export default {
         background: 'white',
         border: '1px solid #999',
         verticalAlign: 'middle',
+        padding: '3px',
     },
     toolbarButtonSvgStyles: {
         fill: '#444',

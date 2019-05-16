@@ -1,8 +1,8 @@
 import IconAlignLeft from 'quill/assets/icons/align-left.svg';
 import IconAlignCenter from 'quill/assets/icons/align-center.svg';
 import IconAlignRight from 'quill/assets/icons/align-right.svg';
-import Undo from 'quill/assets/icons/undo.svg';
-import Clean from 'quill/assets/icons/clean.svg';
+import Garbage from '../assets/garbage.svg';
+import Edit from '../assets/edit.svg';
 import { BaseModule } from './BaseModule';
 
 const Parchment = window.Quill.imports.parchment;
@@ -58,16 +58,16 @@ export class Toolbar extends BaseModule {
                 isApplied: () => FloatStyle.value(this.img) == 'right',
             },
             {
-                icon: Undo,
+                icon: Garbage,
                 apply: () => {
                     window.Quill.find(this.img).deleteAt(0);
                 },
                 isApplied: () => window.Quill.find(this.img) == null,
             },
             {
-                icon: Clean,
+                icon: Edit,
                 apply: () => {
-                    this.options.changeImage(this.img)
+                    this.options.changeImage(this.img, this.overlay)
                 },
                 isApplied: () => window.Quill.find(this.img) == null,
             },
@@ -102,7 +102,6 @@ export class Toolbar extends BaseModule {
 			}
 			Object.assign(button.children[0].style, this.options.toolbarButtonSvgStyles);
 			if (alignment.isApplied()) {
-					// select button if previously applied
 				this._selectButton(button);
 			}
 			this.toolbar.appendChild(button);
