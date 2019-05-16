@@ -67,7 +67,7 @@ export class Toolbar extends BaseModule {
             {
                 icon: Clean,
                 apply: () => {
-                    this.options.changeImage()
+                    this.options.changeImage(this.img)
                 },
                 isApplied: () => window.Quill.find(this.img) == null,
             },

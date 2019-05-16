@@ -3,7 +3,7 @@ var quill = new Quill('#editor', {
      	modules: {
         imageResize: {
 		  displaySize: true,
-		  changeImage: () => console.log('change image'),
+		  changeImage: (e) => console.log('change image', e),
         },
        toolbar: {
 				container: [
