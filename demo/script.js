@@ -2,7 +2,8 @@ var quill = new Quill('#editor', {
     	theme: 'snow',
      	modules: {
         imageResize: {
-          displaySize: true,
+		  displaySize: true,
+		  changeImage: () => console.log('change image'),
         },
        toolbar: {
 				container: [
