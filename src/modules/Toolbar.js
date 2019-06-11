@@ -3,6 +3,7 @@ import IconAlignCenter from 'quill/assets/icons/align-center.svg';
 import IconAlignRight from 'quill/assets/icons/align-right.svg';
 import Garbage from '../assets/garbage.svg';
 import Edit from '../assets/edit.svg';
+import Link from '../assets/link-symbol.svg';
 import { BaseModule } from './BaseModule';
 
 const Parchment = window.Quill.imports.parchment;
@@ -68,6 +69,15 @@ export class Toolbar extends BaseModule {
                 icon: Edit,
                 apply: () => {
                     this.options.changeImage(this.img, this.overlay)
+                },
+                isApplied: () => window.Quill.find(this.img) == null,
+            },
+            {
+                icon: Link,
+                apply: () => {
+                    let link = window.prompt();
+                    let blot = Parchment.find(this.img);
+                    this.options.changeLink(link, blot)
                 },
                 isApplied: () => window.Quill.find(this.img) == null,
             },
