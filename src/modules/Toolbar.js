@@ -75,9 +75,8 @@ export class Toolbar extends BaseModule {
             {
                 icon: Link,
                 apply: () => {
-                    let link = window.prompt();
                     let blot = Parchment.find(this.img);
-                    this.options.changeLink(link, blot)
+                    this.options.changeLink(blot)
                 },
                 isApplied: () => window.Quill.find(this.img) == null,
             },

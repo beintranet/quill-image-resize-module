@@ -4,13 +4,11 @@ var quill = new Quill('#editor', {
         imageResize: {
 		  displaySize: true,
 		  changeImage: (e) => console.log('change image', e),
-		  changeLink: (e, f) => {
-			  let range = this.quill.getSelection(true);
-			  
+		  changeLink: (f) => {
 			  let index = f.offset(this.quill.scroll);
-			  console.log('change link', e, range, index);
 			  this.quill.setSelection(index, 1, 'silent');
-			  this.quill.format('link', e);
+			  var tooltip = this.quill.theme.tooltip;
+			  tooltip.edit('link');
 		  },
         },
        toolbar: {
@@ -23,14 +21,15 @@ var quill = new Quill('#editor', {
 				],  // Selector for toolbar container
 				handlers: {
 					// handlers object will be merged with default handlers object
-					'link': function(value) {
-						if (value) {
-							var href = prompt('Enter the URL');
-							this.quill.format('link', href);
-						} else {
-							this.quill.format('link', false);
-						}
-					},
+					// 'link': function(value) {
+					// 	// if (value) {
+					// 	// 	var href = prompt('Enter the URL');
+					// 	// 	this.quill.format('link', href);
+					// 	// } else {
+					// 	// 	this.quill.format('link', false);
+					// 	// }
+					// 	console.log('errr')
+					// },
 				// 	'image': function(value) {
 				// 		if (value) {
 				// 			var href = prompt('Enter the URL');
