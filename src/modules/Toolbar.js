@@ -11,15 +11,13 @@ import { BaseModule } from './BaseModule';
 export class Toolbar extends BaseModule {
 
     constructor(){
-			super()
-			if( window.Quill){
-				this.Parchment = window.Quill.imports.parchment;
-				if (this.Parchment) {
-						this.this.FloatStyle = new Parchment.Attributor.Style('float', 'float');
-						this.this.MarginStyle = new Parchment.Attributor.Style('margin', 'margin');
-						this.this.DisplayStyle = new Parchment.Attributor.Style('display', 'display');
-				}
-			}
+      super()
+      if(window.Quill) {
+        this.Parchment = window.Quill.imports.parchment;
+        this.FloatStyle = new Parchment.Attributor.Style('float', 'float');
+        this.MarginStyle = new Parchment.Attributor.Style('margin', 'margin');
+        this.DisplayStyle = new Parchment.Attributor.Style('display', 'display');
+      }
     }
 
     onCreate = () => {
