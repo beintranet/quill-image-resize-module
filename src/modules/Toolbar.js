@@ -13,9 +13,9 @@ export class Toolbar extends BaseModule {
     constructor(...args){
       super(...args)
       this.Parchment = window.Quill.imports.parchment;
-      this.FloatStyle = new Parchment.Attributor.Style('float', 'float');
-      this.MarginStyle = new Parchment.Attributor.Style('margin', 'margin');
-      this.DisplayStyle = new Parchment.Attributor.Style('display', 'display');
+      this.FloatStyle = new this.Parchment.Attributor.Style('float', 'float');
+      this.MarginStyle = new this.Parchment.Attributor.Style('margin', 'margin');
+      this.DisplayStyle = new this.Parchment.Attributor.Style('display', 'display');
     }
     
 
