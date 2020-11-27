@@ -6,12 +6,22 @@ import Edit from '../assets/edit.svg';
 import Link from '../assets/link-symbol.svg';
 import { BaseModule } from './BaseModule';
 
-const Parchment = window.Quill.imports.parchment;
-const FloatStyle = new Parchment.Attributor.Style('float', 'float');
-const MarginStyle = new Parchment.Attributor.Style('margin', 'margin');
-const DisplayStyle = new Parchment.Attributor.Style('display', 'display');
+
 
 export class Toolbar extends BaseModule {
+
+    constructor(){
+			super()
+			if( window.Quill){
+				this.Parchment = window.Quill.imports.parchment;
+				if (this.Parchment) {
+						this.this.FloatStyle = new Parchment.Attributor.Style('float', 'float');
+						this.this.MarginStyle = new Parchment.Attributor.Style('margin', 'margin');
+						this.this.DisplayStyle = new Parchment.Attributor.Style('display', 'display');
+				}
+			}
+    }
+
     onCreate = () => {
 		// Setup Toolbar
         this.toolbar = document.createElement('div');
@@ -34,29 +44,29 @@ export class Toolbar extends BaseModule {
             {
                 icon: IconAlignLeft,
                 apply: () => {
-                    DisplayStyle.add(this.img, 'inline');
-                    FloatStyle.add(this.img, 'left');
-                    MarginStyle.add(this.img, '0 1em 1em 0');
+                    this.DisplayStyle.add(this.img, 'inline');
+                    this.FloatStyle.add(this.img, 'left');
+                    this.MarginStyle.add(this.img, '0 1em 1em 0');
                 },
-                isApplied: () => FloatStyle.value(this.img) == 'left',
+                isApplied: () => this.FloatStyle.value(this.img) == 'left',
             },
             {
                 icon: IconAlignCenter,
                 apply: () => {
-                    DisplayStyle.add(this.img, 'block');
-                    FloatStyle.remove(this.img);
-                    MarginStyle.add(this.img, 'auto');
+                    this.DisplayStyle.add(this.img, 'block');
+                    this.FloatStyle.remove(this.img);
+                    this.MarginStyle.add(this.img, 'auto');
                 },
-                isApplied: () => MarginStyle.value(this.img) == 'auto',
+                isApplied: () => this.MarginStyle.value(this.img) == 'auto',
             },
             {
                 icon: IconAlignRight,
                 apply: () => {
-                    DisplayStyle.add(this.img, 'inline');
-                    FloatStyle.add(this.img, 'right');
-                    MarginStyle.add(this.img, '0 0 1em 1em');
+                    this.DisplayStyle.add(this.img, 'inline');
+                    this.FloatStyle.add(this.img, 'right');
+                    this.MarginStyle.add(this.img, '0 0 1em 1em');
                 },
-                isApplied: () => FloatStyle.value(this.img) == 'right',
+                isApplied: () => this.FloatStyle.value(this.img) == 'right',
             },
             {
                 icon: Garbage,
@@ -94,9 +104,9 @@ export class Toolbar extends BaseModule {
 				buttons.forEach(button => button.style.filter = '');
 				if (alignment.isApplied()) {
 						// If applied, unapply
-					FloatStyle.remove(this.img);
-					MarginStyle.remove(this.img);
-					DisplayStyle.remove(this.img);
+					this.FloatStyle.remove(this.img);
+					this.MarginStyle.remove(this.img);
+					this.DisplayStyle.remove(this.img);
 				}				else {
 						// otherwise, select button and apply
 					this._selectButton(button);
